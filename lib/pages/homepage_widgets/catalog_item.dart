@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_catalog/utils/mytheme.dart';
 
 import '../home_page.dart';
 import 'catalog_image.dart';
@@ -14,11 +15,14 @@ class CatalogItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mytheme;
+    // var mytheme;
     return VxBox(
         child: Row(
       children: [
-        CatalogImage(image: catalog.image),
+        Hero(
+          tag: Key(catalog.id.toString()),
+          child: CatalogImage(image: catalog.image),
+        ),
         Expanded(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +47,7 @@ class CatalogItem extends StatelessWidget {
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStatePropertyAll(mytheme.darkbluishcolor),
-                    shape: MaterialStatePropertyAll(StadiumBorder()),
+                    shape: const MaterialStatePropertyAll(StadiumBorder()),
                   ),
                 )
               ],

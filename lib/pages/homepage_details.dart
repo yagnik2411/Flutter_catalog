@@ -13,7 +13,9 @@ class HomePageDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: mytheme.creamcolor,
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+        ),
         bottomNavigationBar:Container(
           color: Colors.white,
           child:  ButtonBar(
@@ -29,13 +31,13 @@ class HomePageDetails extends StatelessWidget {
                 .make(),
             ElevatedButton(
               onPressed: () {},
-              child: "Buy".text.xl2.make(),
+              child: "Add To Cart".text.xl2.make(),
               style: ButtonStyle(
                 backgroundColor:
                     MaterialStatePropertyAll(mytheme.darkbluishcolor),
                 shape: const MaterialStatePropertyAll(StadiumBorder()),
               ),
-            ).wh(100, 50),
+            ).wh(140, 50),
           ],
         ).py16().px20(),
         ),
@@ -64,6 +66,11 @@ class HomePageDetails extends StatelessWidget {
                             .textStyle(context.captionStyle!)
                             .make(),
                         10.heightBox,
+                         "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita."
+                            .text
+                            .textStyle(context.captionStyle)
+                            .make()
+                            .p16(),
                       ],
                     ).py64(),
                   ),

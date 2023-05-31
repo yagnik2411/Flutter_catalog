@@ -12,12 +12,12 @@ class HomePageDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: mytheme.creamcolor,
+        backgroundColor:context.canvasColor,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
         ),
         bottomNavigationBar:Container(
-          color: Colors.white,
+          color: context.cardColor,
           child:  ButtonBar(
         
            alignment: MainAxisAlignment.spaceBetween,
@@ -26,15 +26,16 @@ class HomePageDetails extends StatelessWidget {
             "\$${catalog.price}"
                 .text
                 .xl4
+                
                 .bold
                 .red800
                 .make(),
             ElevatedButton(
               onPressed: () {},
-              child: "Add To Cart".text.xl2.make(),
+              child: "Add To Cart".text.white.xl2.make(),
               style: ButtonStyle(
                 backgroundColor:
-                    MaterialStatePropertyAll(mytheme.darkbluishcolor),
+                    MaterialStatePropertyAll(context.theme.colorScheme.primary),
                 shape: const MaterialStatePropertyAll(StadiumBorder()),
               ),
             ).wh(140, 50),
@@ -56,11 +57,11 @@ class HomePageDetails extends StatelessWidget {
                   height: 30.0,
                   child: Container(
                     width: context.screenWidth,
-                    color: Colors.white,
+                    color:context.cardColor,
                     child: Column(
                       children: [
                         catalog.name.text.xl4.bold
-                            .color(mytheme.darkbluishcolor)
+                            .color(context.theme.colorScheme.secondary)
                             .make(),
                         catalog.desc.text.xl
                             .textStyle(context.captionStyle!)

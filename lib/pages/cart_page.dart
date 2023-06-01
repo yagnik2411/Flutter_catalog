@@ -36,7 +36,30 @@ class _cartTotal extends StatelessWidget {
           "\$9999".text.xl4.color(context.theme.colorScheme.secondary).make(),
           30.widthBox,
           ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: "Buying not supported yet."
+                          .text
+                          .color(context.theme.colorScheme.secondary)
+                          .center
+                          .medium
+                          .bold
+                          .make(),
+                      backgroundColor: context.theme.colorScheme.primary,
+                      elevation: 0,
+                      duration: Duration(milliseconds: 500),
+                      margin: EdgeInsets.all(25),
+                      padding: EdgeInsets.all(15),
+                      behavior: SnackBarBehavior.floating,
+                      shape: ShapeBorder.lerp(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        double.maxFinite,
+                      ),
+                      ));
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
                         context.theme.colorScheme.primary),
@@ -60,15 +83,14 @@ class _cartListState extends State<_cartList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.done),
-        trailing: IconButton(
-          icon: Icon(Icons.remove_circle_outline),
-          onPressed: () {},
-        ),
-        title: "Item 1".text.make(),
-      )
-    );
+        itemCount: 5,
+        itemBuilder: (context, index) => ListTile(
+              leading: Icon(Icons.done),
+              trailing: IconButton(
+                icon: Icon(Icons.remove_circle_outline),
+                onPressed: () {},
+              ),
+              title: "Item 1".text.make(),
+            ));
   }
 }

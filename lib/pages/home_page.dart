@@ -10,10 +10,8 @@ import 'package:flutter_catalog/pages/homepage_widgets/catalog_list.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:flutter_catalog/models/catalog.dart';
-import 'package:flutter_catalog/utils/mytheme.dart';
 
 import '../utils/MyRoutes.dart';
-import '../widgets/item_widget.dart';
 import 'homepage_widgets/catalog_header.dart';
 
 class HomePage extends StatefulWidget {
@@ -51,7 +49,10 @@ class _HomePageState extends State<HomePage> {
             Navigator.pushNamed(context, MyRoutes.cartRoute);
           },
           backgroundColor: context.theme.colorScheme.primary,
-          child: Icon(CupertinoIcons.cart,color: Colors.white,),
+          child: Icon(
+            CupertinoIcons.cart,
+            color: Colors.white,
+          ),
         ),
         backgroundColor: context.canvasColor,
         body: SafeArea(
@@ -61,7 +62,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CatalogHeader(),
-              if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+              if (CatalogModel.items.isNotEmpty)
                 CatalogList().py12().expand()
               else
                 CircularProgressIndicator().py20().centered().expand(),

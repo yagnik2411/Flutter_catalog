@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/utils/MyRoutes.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:flutter_catalog/utils/mytheme.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

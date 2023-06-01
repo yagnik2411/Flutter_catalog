@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/pages/cart_page.dart';
 import 'package:flutter_catalog/pages/home_page.dart';
-import 'package:flutter_catalog/pages/homepage_details.dart';
 import 'package:flutter_catalog/pages/login_page.dart';
 import 'package:flutter_catalog/utils/MyRoutes.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_catalog/utils/mytheme.dart';
 
 void main() {

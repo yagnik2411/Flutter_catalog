@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/pages/homepage_widgets/addtocart.dart';
 import 'package:flutter_catalog/utils/mytheme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -12,35 +13,22 @@ class HomePageDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor:context.canvasColor,
+        backgroundColor: context.canvasColor,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
         ),
-        bottomNavigationBar:Container(
+        bottomNavigationBar: Container(
           color: context.cardColor,
-          child:  ButtonBar(
-        
-           alignment: MainAxisAlignment.spaceBetween,
-          buttonPadding: EdgeInsets.zero,
-          children: [
-            "\$${catalog.price}"
-                .text
-                .xl4
-                
-                .bold
-                .red800
-                .make(),
-            ElevatedButton(
-              onPressed: () {},
-              child: "Add To Cart".text.white.xl2.make(),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStatePropertyAll(context.theme.colorScheme.primary),
-                shape: const MaterialStatePropertyAll(StadiumBorder()),
-              ),
-            ).wh(140, 50),
-          ],
-        ).py16().px20(),
+          child: ButtonBar(
+            alignment: MainAxisAlignment.spaceBetween,
+            buttonPadding: EdgeInsets.zero,
+            children: [
+              "\$${catalog.price}".text.xl4.bold.red800.make(),
+              AddToCart(
+                catalog: catalog,
+              ).wh(140, 50),
+            ],
+          ).py16().px20(),
         ),
         body: SafeArea(
           bottom: false,
@@ -57,7 +45,7 @@ class HomePageDetails extends StatelessWidget {
                   height: 30.0,
                   child: Container(
                     width: context.screenWidth,
-                    color:context.cardColor,
+                    color: context.cardColor,
                     child: Column(
                       children: [
                         catalog.name.text.xl4.bold
@@ -67,7 +55,7 @@ class HomePageDetails extends StatelessWidget {
                             .textStyle(context.captionStyle!)
                             .make(),
                         10.heightBox,
-                         "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita."
+                        "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita."
                             .text
                             .textStyle(context.captionStyle)
                             .make()

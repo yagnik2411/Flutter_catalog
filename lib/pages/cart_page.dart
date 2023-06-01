@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog/utils/mytheme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../models/cart.dart';
@@ -43,14 +42,14 @@ class _cartTotal extends StatelessWidget {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: "Buying not supported yet."
                           .text
-                          .color(context.theme.colorScheme.secondary)
+                          .color(Colors.white)
                           .center
                           .medium
-                          .bold
+                          
                           .make(),
                       backgroundColor: context.theme.colorScheme.primary,
                       elevation: 0,
-                      duration: Duration(milliseconds: 500),
+                      duration: Duration(milliseconds: 700),
                       margin: EdgeInsets.all(25),
                       padding: EdgeInsets.all(15),
                       behavior: SnackBarBehavior.floating,
@@ -77,12 +76,7 @@ class _cartTotal extends StatelessWidget {
   }
 }
 
-class _cartList extends StatefulWidget {
-  @override
-  State<_cartList> createState() => _cartListState();
-}
-
-class _cartListState extends State<_cartList> {
+class _cartList extends StatelessWidget{
   final _cart = CartModel();  
   @override
   Widget build(BuildContext context) {
@@ -94,7 +88,7 @@ class _cartListState extends State<_cartList> {
                 icon: Icon(Icons.remove_circle_outline),
                 onPressed: () {
                   _cart.remove(_cart.items[index]);
-                  setState(() {});
+                
                 },
               ),
               title: _cart.items[index].name.text.make(),

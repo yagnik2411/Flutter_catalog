@@ -1,4 +1,6 @@
+import 'package:flutter_catalog/core/mystore.dart';
 import 'package:flutter_catalog/models/catalog.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CartModel {
 
@@ -7,7 +9,6 @@ class CartModel {
   CatalogModel get catalog => _catalog;
 
   set catalog(CatalogModel newCatalog) {
-    assert(newCatalog != null);
     _catalog = newCatalog;
   }
 
@@ -25,4 +26,17 @@ class CartModel {
     _itemIds.remove(item.id);
   }
 
+}
+
+
+
+
+class AddMutation extends VxMutation<MyStore> {
+  final Item item;
+
+  AddMutation(this.item);
+  @override
+  perform() {
+    store!.cart._itemIds.add(item.id);
+  }
 }

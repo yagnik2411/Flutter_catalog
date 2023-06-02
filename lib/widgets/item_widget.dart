@@ -6,8 +6,7 @@ class ItemView extends StatelessWidget {
   final Item item;
 
   ItemView({Key? key, required this.item})
-      : assert(item != null),
-        super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

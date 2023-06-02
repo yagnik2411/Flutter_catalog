@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog/utils/mytheme.dart';
+import 'package:flutter_catalog/pages/homepage_widgets/addtocart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../models/catalog.dart';
@@ -7,39 +7,26 @@ import '../models/catalog.dart';
 class HomePageDetails extends StatelessWidget {
   final Item catalog;
   const HomePageDetails({Key? key, required this.catalog})
-      : assert(catalog != null),
-        super(key: key);
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: mytheme.creamcolor,
+        backgroundColor: context.canvasColor,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
         ),
-        bottomNavigationBar:Container(
-          color: Colors.white,
-          child:  ButtonBar(
-        
-           alignment: MainAxisAlignment.spaceBetween,
-          buttonPadding: EdgeInsets.zero,
-          children: [
-            "\$${catalog.price}"
-                .text
-                .xl4
-                .bold
-                .red800
-                .make(),
-            ElevatedButton(
-              onPressed: () {},
-              child: "Add To Cart".text.xl2.make(),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStatePropertyAll(mytheme.darkbluishcolor),
-                shape: const MaterialStatePropertyAll(StadiumBorder()),
-              ),
-            ).wh(140, 50),
-          ],
-        ).py16().px20(),
+        bottomNavigationBar: Container(
+          color: context.cardColor,
+          child: ButtonBar(
+            alignment: MainAxisAlignment.spaceBetween,
+            buttonPadding: EdgeInsets.zero,
+            children: [
+              "\$${catalog.price}".text.xl4.bold.red800.make(),
+              AddToCart(
+                catalog: catalog,
+              ).wh(140, 50),
+            ],
+          ).py16().px20(),
         ),
         body: SafeArea(
           bottom: false,
@@ -56,17 +43,17 @@ class HomePageDetails extends StatelessWidget {
                   height: 30.0,
                   child: Container(
                     width: context.screenWidth,
-                    color: Colors.white,
+                    color: context.cardColor,
                     child: Column(
                       children: [
                         catalog.name.text.xl4.bold
-                            .color(mytheme.darkbluishcolor)
+                            .color(context.theme.colorScheme.secondary)
                             .make(),
                         catalog.desc.text.xl
                             .textStyle(context.captionStyle!)
                             .make(),
                         10.heightBox,
-                         "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita."
+                        "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita."
                             .text
                             .textStyle(context.captionStyle)
                             .make()

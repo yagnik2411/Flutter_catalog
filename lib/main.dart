@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/core/mystore.dart';
 import 'package:flutter_catalog/pages/cart_page.dart';
 import 'package:flutter_catalog/pages/home_page.dart';
-import 'package:flutter_catalog/pages/homepage_details.dart';
 import 'package:flutter_catalog/pages/login_page.dart';
 import 'package:flutter_catalog/utils/MyRoutes.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_catalog/utils/mytheme.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(VxState( store: MyStore(), child: const MyApp(),));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // home: HomePage(),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme:mytheme.lighttheme(context),
       darkTheme: mytheme.darktheme(context),
       initialRoute: MyRoutes.homeRoute,

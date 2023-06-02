@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/core/mystore.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -28,7 +27,7 @@ class CartPage extends StatelessWidget {
 }
 
 class _cartTotal extends StatelessWidget {
-   final CartModel _cart = (VxState.store as MyStore).cart;
+  final CartModel _cart = (VxState.store as MyStore).cart;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -36,7 +35,17 @@ class _cartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${_cart.totalPrice}".text.xl4.color(context.theme.colorScheme.secondary).make(),
+          VxConsumer(
+            notifications: {},
+            mutations: const {RemoveMutation},
+            builder: (context, _, status) {
+              return "\$${_cart.totalPrice}"
+                  .text
+                  .xl5
+                  .color(context.theme.colorScheme.secondary)
+                  .make();
+            },
+          ),
           30.widthBox,
           ElevatedButton(
                   onPressed: () {
@@ -46,7 +55,6 @@ class _cartTotal extends StatelessWidget {
                           .color(Colors.white)
                           .center
                           .medium
-                          
                           .make(),
                       backgroundColor: context.theme.colorScheme.primary,
                       elevation: 0,
@@ -61,7 +69,7 @@ class _cartTotal extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30)),
                         double.maxFinite,
                       ),
-                      ));
+                    ));
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
@@ -77,22 +85,24 @@ class _cartTotal extends StatelessWidget {
   }
 }
 
-class _cartList extends StatelessWidget{
-  final CartModel _cart = (VxState.store as MyStore).cart; 
+class _cartList extends StatelessWidget {
+  final CartModel _cart = (VxState.store as MyStore).cart;
   @override
   Widget build(BuildContext context) {
-    return _cart.items.isEmpty? "Nothing To Show".text.xl3.makeCentered() :ListView.builder(
-        itemCount: _cart.items.length,
-        itemBuilder: (context, index) => ListTile(
-              leading: Icon(Icons.done),
-              trailing: IconButton(
-                icon: Icon(Icons.remove_circle_outline),
-                onPressed: () {
-                  _cart.remove(_cart.items[index]);
-                
-                },
-              ),
-              title: _cart.items[index].name.text.make(),
-            ));
+    VxState.watch(context, on: [RemoveMutation]);
+    return _cart.items.isEmpty
+        ? "Nothing To Show".text.xl3.makeCentered()
+        : ListView.builder(
+            itemCount: _cart.items.length,
+            itemBuilder: (context, index) => ListTile(
+                  leading: Icon(Icons.done),
+                  trailing: IconButton(
+                    icon: Icon(Icons.remove_circle_outline),
+                    onPressed: () {
+                      RemoveMutation(_cart.items[index]);
+                    },
+                  ),
+                  title: _cart.items[index].name.text.make(),
+                ));
   }
 }
